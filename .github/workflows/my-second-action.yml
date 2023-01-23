@@ -1,6 +1,8 @@
 name: unit-test-react
 on: 
   push:
+    branches:
+      - main
     paths: 
       - 'second-action-react/**'
 
