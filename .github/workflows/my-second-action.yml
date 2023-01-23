@@ -1,8 +1,6 @@
 name: unit-test-react
 on: 
-  push:
-    branches:
-      - main
+  workflow_dispatch:
     paths: 
       - 'second-action-react/**'
 
@@ -17,7 +15,11 @@ jobs:
         with:
           node-version: '18'
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          cd second-action-react
+          npm ci
       - name: Run Tests
-        run: npm test
+        run: |
+          cd second-action-react
+          npm test
 
