@@ -1,6 +1,8 @@
 name: unit-test-react
 on: 
-  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
     paths: 
       - 'second-action-react/**'
 
