@@ -2,7 +2,7 @@ name: unit-test-react
 on: 
   push:
     paths: 
-      - '/second-action-react/**'
+      - 'second-action-react/**'
 
 jobs:
   test:
