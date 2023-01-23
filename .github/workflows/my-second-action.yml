@@ -18,6 +18,7 @@ jobs:
           node-version: '18'
       - name: Install Dependencies
         run: |
+          echo 'Installing dependencies'
           cd second-action-react
           npm ci
       - name: Run Tests
