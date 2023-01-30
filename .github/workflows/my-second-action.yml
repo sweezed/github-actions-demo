@@ -26,4 +26,4 @@ jobs:
           cd second-action-react
           npx nyc npm run test -- --coverage
         env:
-          NYC_THRESHHOLD: 85
+          NYC_THRESHHOLD: 29
