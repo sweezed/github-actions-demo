@@ -1,6 +1,8 @@
 name: third-action-deployment
 on:
   push:
+    branches:
+      - 'main'
     paths:
       - 'my-third-action/**'
       - '.github/workflows/third-action-deployment.yml'
@@ -9,31 +11,45 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: get-code
+      - name: Get Code
         uses: actions/checkout@v3
 
-      - name: install-node-18
+      - name: Install Node 18
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: install-dependencies
+      - name: Install Dependencies
         run: |
           echo 'Installing dependencies...'
           cd my-third-action
           npm ci
 
-      - name: lint
+      - name: Lint
         run: |
           echo 'Linting...'
           cd my-third-action
           npm run lint
 
-      - name: make-pretty
+      - name: Make Pretty
         run: |
           echo 'Making pretty...'
           cd my-third-action
           npx prettier --write .
+
+      - name: Check For Failures
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+              echo "This workflow was not triggered by a push to the main branch. Exiting."
+              exit 78
+            fi
+            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
+            if [ "${failures}" -gt "0" ]; then
+              echo "There were failures in build-job-1. Exiting."
+              exit 1
+            fi
+          fi
 
   test:
     needs: lint
@@ -61,6 +77,20 @@ jobs:
         env:
           NYC_THRESHHOLD: 85
 
+      - name: Check For Failures
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+              echo "This workflow was not triggered by a push to the main branch. Exiting."
+              exit 78
+            fi
+            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
+            if [ "${failures}" -gt "0" ]; then
+              echo "There were failures in build-job-1. Exiting."
+              exit 1
+            fi
+          fi
+
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -84,3 +114,17 @@ jobs:
           echo 'Building...'
           cd my-third-action
           npm run build
+
+      - name: Check For Failures
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+              echo "This workflow was not triggered by a push to the main branch. Exiting."
+              exit 78
+            fi
+            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
+            if [ "${failures}" -gt "0" ]; then
+              echo "There were failures in build-job-1. Exiting."
+              exit 1
+            fi
+          fi
