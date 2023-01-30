@@ -1,6 +1,6 @@
 
 export function Header({title}) {
-  // console.log('title: ', title)
+  console.log('title: ', title)
 
   return (
     <div>
