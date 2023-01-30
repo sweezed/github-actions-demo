@@ -1,0 +1,68 @@
+name: unit-test-react
+on: 
+  push:
+    branches:
+      - 'main'
+    paths: 
+      - 'second-action-react/**'
+      - '.github/workflows/deployment.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+
+      - name: Install Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          echo 'Installing dependencies'
+          cd second-action-react
+          npm ci
+
+      - name: Run Tests
+        run: |
+          cd second-action-react
+          npx nyc npm run test -- --coverage
+        env:
+          NYC_THRESHHOLD: 85
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+
+      - name: Install Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          echo 'Installing dependencies'
+          cd second-action-react
+          npm ci
+
+      - name: Build
+        run: |
+          echo 'Building'
+          cd second-action-react
+          echo 'npm run build'
+          npm run build
+
+      - name: Deploy
+        run: |
+          echo 'Deploying'
+          cd second-action-react
+          echo 'npm run deploy'
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+
