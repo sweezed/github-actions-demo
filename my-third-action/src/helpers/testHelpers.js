@@ -1,4 +1,4 @@
 
 export function testHelpers() {
-  return "testHelpers";
+  return "testHelper";
 }
