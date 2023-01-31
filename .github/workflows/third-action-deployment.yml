@@ -43,7 +43,7 @@ jobs:
           echo "work flow: ${GITHUB_WORKFLOW}"
           echo "Git hub refs: ${GITHUB_REF}"
           if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
-            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "third-action-deployment" ]; then
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
             fi
@@ -83,8 +83,10 @@ jobs:
       - name: Check For Failures
         run: |
           echo "event name: ${GITHUB_EVENT_NAME}"
+          echo "work flow: ${GITHUB_WORKFLOW}"
+          echo "Git hub refs: ${GITHUB_REF}"
           if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
-            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "third-action-deployment" ]; then
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
             fi
@@ -121,8 +123,11 @@ jobs:
 
       - name: Check For Failures
         run: |
+          echo "event name: ${GITHUB_EVENT_NAME}"
+          echo "work flow: ${GITHUB_WORKFLOW}"
+          echo "Git hub refs: ${GITHUB_REF}"
           if [ "${GITHUB_EVENT_NAME}" == "push" ] && [ "${GITHUB_REF}" == "refs/heads/main" ]; then
-            if [ "${GITHUB_WORKFLOW}" != "CI on push to main" ]; then
+            if [ "${GITHUB_WORKFLOW}" != "third-action-deployment" ]; then
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
             fi
