@@ -1,4 +1,4 @@
-import "./HelpBox.css";
+import './HelpBox.css'
 
 function HelpBox({ title, text }) {
   return (
@@ -6,7 +6,7 @@ function HelpBox({ title, text }) {
       <h2>{title}</h2>
       <p>{text}</p>
     </article>
-  );
+  )
 }
 
-export default HelpBox;
+export default HelpBox

@@ -2,10 +2,10 @@ name: third-action-deployment
 on:
   pull_request:
     branches:
-      - "main"
+      - 'main'
     paths:
-      - "my-third-action/**"
-      - ".github/workflows/third-action-deployment.yml"
+      - 'my-third-action/**'
+      - '.github/workflows/third-action-deployment.yml'
 
 jobs:
   lint:
@@ -19,7 +19,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: Install Dependencies
         run: |
@@ -42,8 +42,8 @@ jobs:
       - name: Commit lint & prettier changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "chore: lint & prettier"
-          commit_options: "--no-verify"
+          commit_message: 'chore: lint & prettier'
+          commit_options: '--no-verify'
           branch: ${{ github.head_ref}}
 
   test:
@@ -56,7 +56,7 @@ jobs:
       - name: install-node-18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: install-dependencies
         run: |
@@ -82,7 +82,7 @@ jobs:
       - name: install-node-18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: install-dependencies
         run: |

@@ -1,5 +1,5 @@
-import MainContent from "./components/MainContent";
-import logo from "./assets/images/logo.png";
+import MainContent from './components/MainContent'
+import logo from './assets/images/logo.png'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       </header>
       <MainContent />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

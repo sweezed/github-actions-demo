@@ -2,10 +2,10 @@ name: unit-test-react
 on:
   push:
     branches:
-      - "main"
+      - 'main'
     paths:
-      - "second-action-react/**"
-      - ".github/workflows/deployment.yml"
+      - 'second-action-react/**'
+      - '.github/workflows/deployment.yml'
 
 jobs:
   test:
@@ -17,7 +17,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: Install Dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: Install Dependencies
         run: |
