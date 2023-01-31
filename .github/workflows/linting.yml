@@ -22,7 +22,7 @@ jobs:
         run: |
           echo 'Installing linting dependencies...'
           npm install eslint-plugin-react@latest --save-dev
-          
+
       - name: Lint
         run: |
           echo 'Performing eslinting..'
