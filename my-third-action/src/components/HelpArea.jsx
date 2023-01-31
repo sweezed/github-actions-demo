@@ -1,6 +1,5 @@
 import HelpBox from './HelpBox'
 import './HelpArea.css'
-
 const HELP_ITEMS = [
   {
     id: 'h1',
@@ -18,7 +17,6 @@ const HELP_ITEMS = [
     text: 'GitHub Actions is an automation service (or CI / CD service) that helps you automate repository-related workflows and processes.',
   },
 ]
-
 function HelpArea() {
   return (
     <section

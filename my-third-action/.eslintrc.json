@@ -14,7 +14,15 @@
   "extends": ["plugin:react/recommended", "plugin:react/jsx-runtime"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "semi": [2, "always"]
+    "semi": [2, "never"],
+    "padded-blocks": ["error", "never"],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "never", "prev": "*", "next": "*" },
+      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
+      { "blankLine": "always", "prev": "block-like", "next": "*" }
+    ],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }]
   },
   "settings": {
     "react": {
