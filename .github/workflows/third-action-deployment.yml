@@ -42,9 +42,7 @@ jobs:
         with:
           commit_message: "chore: lint & prettier"
           commit_options: "--no-verify"
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          branch: ${{ github.head_ref}}
 
   test:
     needs: lint
