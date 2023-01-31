@@ -1,6 +1,6 @@
 name: third-action-deployment
 on:
-  push:
+  pull_request:
     branches:
       - 'main'
     paths:
