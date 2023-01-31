@@ -2,12 +2,12 @@ name: third-action-deployment
 on:
   pull_request:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - 'my-third-action/**'
-      - '.github/workflows/third-action-deployment.yml'
+      - "my-third-action/**"
+      - ".github/workflows/third-action-deployment.yml"
 
-jobs: 
+jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install Dependencies
         run: |
@@ -36,7 +36,7 @@ jobs:
           echo 'Making pretty...'
           cd my-third-action
           npx prettier --write .
-  
+
   test:
     needs: lint
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - name: install-node-18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: install-dependencies
         run: |
@@ -63,7 +63,6 @@ jobs:
         env:
           NYC_THRESHHOLD: 85
 
-
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -74,7 +73,7 @@ jobs:
       - name: install-node-18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: install-dependencies
         run: |

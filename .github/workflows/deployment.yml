@@ -1,11 +1,11 @@
 name: unit-test-react
-on: 
+on:
   push:
     branches:
-      - 'main'
-    paths: 
-      - 'second-action-react/**'
-      - '.github/workflows/deployment.yml'
+      - "main"
+    paths:
+      - "second-action-react/**"
+      - ".github/workflows/deployment.yml"
 
 jobs:
   test:
@@ -17,7 +17,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install Dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
       - name: Install Node 18
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install Dependencies
         run: |
@@ -65,4 +65,3 @@ jobs:
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-

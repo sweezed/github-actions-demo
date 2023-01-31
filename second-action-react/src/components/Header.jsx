@@ -1,10 +1,9 @@
-
-export function Header({title}) {
-  console.log('title: ', title)
+export function Header({ title }) {
+  console.log("title: ", title);
 
   return (
     <div>
-     <h1>{title}</h1>
+      <h1>{title}</h1>
     </div>
-  )
+  );
 }
