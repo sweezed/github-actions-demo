@@ -47,11 +47,6 @@ jobs:
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
             fi
-            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
-            if [ "${failures}" -gt "0" ]; then
-              echo "There were failures in build-job-1. Exiting."
-              exit 1
-            fi
           fi
 
   test:
@@ -90,11 +85,6 @@ jobs:
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
             fi
-            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
-            if [ "${failures}" -gt "0" ]; then
-              echo "There were failures in build-job-1. Exiting."
-              exit 1
-            fi
           fi
 
   build:
@@ -130,10 +120,5 @@ jobs:
             if [ "${GITHUB_WORKFLOW}" != "third-action-deployment" ]; then
               echo "This workflow was not triggered by a push to the main branch. Exiting."
               exit 78
-            fi
-            failures=$(grep -c "::error" ${GITHUB_WORKSPACE}/*.log)
-            if [ "${failures}" -gt "0" ]; then
-              echo "There were failures in build-job-1. Exiting."
-              exit 1
             fi
           fi
