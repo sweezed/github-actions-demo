@@ -5,7 +5,7 @@ on:
       - 'main'
     paths:
       - 'second-action-react/**'
-      - '.github/workflows/deployment.yml'
+      - '.github/workflows/my-second-depl.yml'
 
 jobs:
   test:

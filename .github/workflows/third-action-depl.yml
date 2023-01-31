@@ -5,49 +5,10 @@ on:
       - 'main'
     paths:
       - 'my-third-action/**'
-      - '.github/workflows/third-action-deployment.yml'
+      - '.github/workflows/third-action-depl.yml'
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Install Node 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: |
-          echo 'Installing dependencies...'
-          cd my-third-action
-          npm ci
-
-      - name: Lint
-        run: |
-          echo 'Linting...'
-          cd my-third-action
-          npm run lint
-
-      - name: Make Pretty
-        run: |
-          echo 'Making pretty...'
-          cd my-third-action
-          npx prettier --write .
-
-      - name: Commit lint & prettier changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'chore: lint & prettier'
-          commit_options: '--no-verify'
-          branch: ${{ github.head_ref}}
-
   test:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: get-code
