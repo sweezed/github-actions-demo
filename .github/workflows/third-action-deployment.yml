@@ -71,7 +71,7 @@ jobs:
         run: |
           echo 'Running tests...'
           cd my-third-action
-          npm run test -- --coverage
+          npm run test
         env:
           NYC_THRESHHOLD: 85
 
